@@ -5,10 +5,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "node scripts/dev.mjs",
-    "dev:fast": "next dev",
+    "dev:fast": "next dev -p 3010",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "copy": "cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
+    "deploy": "pnpm i && pnpm build && pnpm copy && export PORT=3010 && node .next/standalone/server.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
